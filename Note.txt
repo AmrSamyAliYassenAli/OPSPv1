@@ -1,0 +1,19 @@
+(1)Client:             
+    #Process Sequance:
+        (1)Register
+        (2)Verify Account
+        (3)Login
+        (4)Home {most soled}
+        (5) Clooect items to order {
+            1.add item with amount
+        }
+
+name 
+username
+email
+password
+Address
+
+(2)Admin:          (3)pharmacist:  
+
+#Database Tables:

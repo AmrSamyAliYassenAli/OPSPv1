@@ -1,0 +1,662 @@
+{
+	"info": {
+		"_postman_id": "df6405f8-7758-4123-aa02-e6cadea4f53b",
+		"name": "Online Pharmasy Store Project [OPSP]",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"demo\",\r\n    \"username\":\"demo\",\r\n    \"email\":\"demo@demo.com\",\r\n    \"password\":\"demo123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/users/api/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"users",
+								"api",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Verifiy Account",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5001/users/verify-now/51454b0e3e468bf0888e081ff4cc382e5942c8fc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"users",
+								"verify-now",
+								"51454b0e3e468bf0888e081ff4cc382e5942c8fc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Authentication",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"demo\",\r\n    \"password\":\"demo123\"\r\n }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/users/api/authenticate",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"users",
+								"api",
+								"authenticate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Authenticated User",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFtcnNhbXkiLCJuYW1lIjoiQW1yIFNhbXkiLCJlbWFpbCI6ImFtcnNhbXl4eXpAeWFob28uY29tIiwiaWQiOiI2MGY5MGZjYmYxMWIwMTUwYzg4Njg4MDEiLCJpYXQiOjE2MjY5MzU5MTQsImV4cCI6MTYyNzAyMjMxNH0.I9-nKS7HhodFNtYCglI2HazR-b3R84FbKKQc6aJ34I0",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5001/users/api/authenticate",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"users",
+								"api",
+								"authenticate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LogOut",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Pharmacy",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":-12,\r\n    \"address\":{\r\n        \"country\":{\r\n            \"country_name\":\"egypt\",\r\n            \"country_code\":\"EG\"\r\n        },\r\n    \"city\":{\r\n        \"city_name\":\"cairo\",\r\n        \"postal_code\":\"11791\"\r\n    },\r\n    \"district_name\":\"elsa3a\",\r\n    \"building_number\":\"121\",\r\n    \"floor_number\":\"3\",\r\n    \"apartment_number\":\"34\",\r\n    \"address_details\":\"near KFC\"\r\n    },\r\n    \"pharmacy\":{\r\n        \"pharmacy_name\":\"Dr.Amr Pharmacy\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/pharmacy/api/manage",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"pharmacy",
+								"api",
+								"manage"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"60fb66804701874cdcf04283\",\r\n    \"address\":{\r\n        \"country\":{\r\n            \"country_name\":\"Updatedegypt1992\",\r\n            \"country_code\":\"UpdatedEG2991\"\r\n        },\r\n    \"city\":{\r\n        \"city_name\":\"Giz12999a\",\r\n        \"postal_code\":\"121241911992\"\r\n    },\r\n    \"district_name\":\"elsa3a Updated1992\",\r\n    \"building_number\":\"121Updated1299\",\r\n    \"floor_number\":\"3Updated2991\",\r\n    \"apartment_number\":\"34Updated2991\",\r\n    \"address_details\":\"near KFCUpdated2991\"\r\n    },\r\n    \"pharmacy\":{\r\n        \"pharmacy_name\":\"Dr.Amr Pharmacy Updated9999\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/pharmacy/api/manage",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"pharmacy",
+								"api",
+								"manage"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":-1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/pharmacy/api/get",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"pharmacy",
+								"api",
+								"get"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get by Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"60fb66804701874cdcf04283\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/pharmacy/api/get",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"pharmacy",
+								"api",
+								"get"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Block Pharmacy Account",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"60fb66804701874cdcf04283\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/pharmacy/api/block",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"pharmacy",
+								"api",
+								"block"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Toggle IsActive",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"60fb66804701874cdcf04283\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/pharmacy/api/toggleisacvtive",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"pharmacy",
+								"api",
+								"toggleisacvtive"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"-1\"\r\n    \"category\":\"Cat1\",\r\n    \"product_name\":\"revow\",\r\n    \"dosage_form\":\"tablets\",\r\n    \"product_code\":\"1ds2ag1sd531\",\r\n    \"code\":\"awg685g8685685\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/product/api/manage",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"product",
+								"api",
+								"manage"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"60fb967c74742a5a6c7ea21e\",\r\n    \"category\":\"Cat1Updated\",\r\n    \"product_name\":\"revowUpdated\",\r\n    \"dosage_form\":\"tablets\",\r\n    \"product_code\":\"1ds2ag1sd531Updated\",\r\n    \"code\":\"awg685g8685685Updated\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/product/api/manage",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"product",
+								"api",
+								"manage"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"-12\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/product/api/get",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"product",
+								"api",
+								"get"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get by Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/product/api/get",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"product",
+								"api",
+								"get"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Block Product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"60fb96e774742a5a6c7ea221\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/product/api/block",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"product",
+								"api",
+								"block"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Toggle IsActive",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"60fb96e774742a5a6c7ea221\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/product/api/toggleisacvtive",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"product",
+								"api",
+								"toggleisacvtive"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Parmacy Product",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"-1\",\r\n    \"PharmacyID_FK\":\"60fba7ff68e3e82380770b8e\",\r\n    \"ProductID_FK\":\"60fba81268e3e82380770b90\",\r\n    \"price\":99,\r\n    \"quantity\":\"99\",\r\n    \"prouduct_image\":\"99\",\r\n    \"eachboxhas\":99,\r\n    \"unitperbox\":99,\r\n    \"expiration_date\":\"2021-07-24T05:41:19.438+00:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/parmacyproduct/api/manage",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"parmacyproduct",
+								"api",
+								"manage"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"60fba9ea3db8d0189c0adc27\",\r\n    \"PharmacyID_FK\":\"60fba7ff68e3e82380770b8e\",\r\n    \"ProductID_FK\":\"60fba81268e3e82380770b90\",\r\n    \"price\":99,\r\n    \"quantity\":\"99\",\r\n    \"prouduct_image\":\"99\",\r\n    \"eachboxhas\":99,\r\n    \"unitperbox\":99,\r\n    \"expiration_date\":\"2021-07-24T05:41:19.438+00:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/parmacyproduct/api/manage",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"parmacyproduct",
+								"api",
+								"manage"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5001/parmacyproduct/api/get",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"parmacyproduct",
+								"api",
+								"get"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5001/parmacyproduct/api/get",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"parmacyproduct",
+								"api",
+								"get"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Block Parmacy Product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5001/parmacyproduct/api/block",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"parmacyproduct",
+								"api",
+								"block"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Toggle IsActive",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5001/parmacyproduct/api/toggleisacvtive",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"parmacyproduct",
+								"api",
+								"toggleisacvtive"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
