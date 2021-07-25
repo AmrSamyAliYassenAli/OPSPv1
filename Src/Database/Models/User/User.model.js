@@ -8,11 +8,13 @@ import { pick } from 'lodash';
 const UserSchema = new Schema({
     PharmacyID_FK:{
         ref:'Pharmacy',
-        type:Schema.Types.ObjectId
+        type:Schema.Types.ObjectId,
+        require:false
     },
     AddressID_FK:{
         ref:'Address',
-        type:Schema.Types.ObjectId
+        type:Schema.Types.ObjectId,
+        require:true
     },
     name:{
         type:String,

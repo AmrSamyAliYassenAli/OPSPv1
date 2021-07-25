@@ -3,6 +3,10 @@ const SendMail = require('../../../Infrastructure/Helpers/email-sender');
 const ResponseBuilder = require('../../../Infrastructure/Constants/DTOs/Responce/ResponseBuilder');
 const UserValidation = require('../../../Infrastructure/Validators/User/User.Validation');
 const UserServices = require('../../../Services/User/User.Services');
+const PharmacyValidation = require('../../../Infrastructure/Validators/Pharmacy/Pharmacy.Validation');
+const AddressValidation = require ('../../../Infrastructure/Validators/Common/Address.Validation');
+const AddressService = require('../../../Services/Common/Address.Service');
+
 import {join} from "path";
 
 class UserController{
@@ -18,7 +22,8 @@ class UserController{
             if(await UserValidation.IsExistEmail(email)) {
                 return res.status(400).send(ResponseBuilder.Create(false,{},ValidationMassages.IsExistEmail));
             }
-            let {verificationCode} = await UserServices.Register(req.body);       
+            let Address_id =await AddressService.Create(req.body.addressObj);
+            let {verificationCode} = await UserServices.Register(req.body,Address_id);       
             await SendMail.VerificationLink(email,username,verificationCode);
             return res.status(201).send(ResponseBuilder.Create(true,{verificationCode},ValidationMassages.AccountCreatedSuccessfully));
         } catch (error) {
@@ -118,6 +123,67 @@ class UserController{
     };
 
 //#endregion
+
+//#region Update(userInfo,userAddress) && Block Account && Toogle IsActive
+
+static UpdateInfo = async(req,res)=>{
+    try {
+        let {id}=req.body;
+        if(!UserValidation.IsExistUserID(id)){
+            return res.status(404).send(ResponseBuilder.Create(true,{},`UserId:${id} is NotFound ${ValidationMassages.FaildRetriveData}`));
+        }
+        await UserServices.UpdateInfo(req.body);
+        return res.status(200).send(ResponseBuilder.Create(true,{},ValidationMassages.ScessfullyUpdated));         
+    } catch (error) {
+        return res.status(500).send(ResponseBuilder.Create(false,{},error.message));
+    }
+};
+
+static UpdateAddress = async(req,res)=>{
+    try {
+        let {id,AddressID_FK}=req.body;
+        if(!UserValidation.IsExistUserID(id)){
+            return res.status(404).send(ResponseBuilder.Create(true,{},`UserId:${id} is NotFound ${ValidationMassages.FaildRetriveData}`));
+        }
+        if(!await AddressValidation.IsValidId(AddressID_FK)){
+            return res.status(404).send(ResponseBuilder.Create(true,{},`Address Id:${AddressID_FK} is NotFound ${ValidationMassages.FaildRetriveData}`));
+        }
+        await AddressService.Update(AddressID_FK,req.body.addressObj);
+        await UserServices.UpdateAddress(id);
+        return res.status(200).send(ResponseBuilder.Create(true,{},ValidationMassages.ScessfullyUpdated));         
+    } catch (error) {
+        return res.status(500).send(ResponseBuilder.Create(false,{},error.message));
+    }
+};
+
+static Block = async(req,res)=>{
+    try {
+        let {id} = req.body;
+        if(!UserValidation.IsExistUserID(id)){
+            return res.status(404).send(ResponseBuilder.Create(true,{},`UserId:${id} is NotFound ${ValidationMassages.FaildRetriveData}`));
+        }
+        await UserServices.Block(id);
+        return res.status(200).send(ResponseBuilder.Create(true,{},ValidationMassages.ScessfullyBlockAccount));
+    } catch (error) {
+        return res.status(500).send(ResponseBuilder.Create(false,{},error.message));
+    }
+};
+
+static ToggleIsActive = async(req,res)=>{
+    try {
+        let {id} = req.body;
+        if(!UserValidation.IsExistUserID(id)){
+            return res.status(404).send(ResponseBuilder.Create(true,{},`UserId:${id} is NotFound ${ValidationMassages.FaildRetriveData}`));
+        }
+        let isActive = await UserServices.ToggleIsActive(id);
+        return res.status(200).send(ResponseBuilder.Create(true,{},`${ValidationMassages.ScessfullyToggleIsActive} to ${isActive}`));
+    } catch (error) {
+        return res.status(500).send(ResponseBuilder.Create(false,{},error.message));
+    }
+};
+
+//#endregion
+
 }
 
 module.exports=UserController;

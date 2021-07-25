@@ -1,15 +1,16 @@
 import {Pharmacy} from '../../Database/Models';
+const PharmacyQueryParams = require('../../Infrastructure/Enums/Pharmacy/Pharmacy.QueryParams');
 
 class PharmacyServices{
 
 //#region Pharmacy CRUD
 
     static GetAll = async()=>{
-        return await Pharmacy.find({isActive:true}).select(["pharmacy_name"]).populate('Address').find({isActive:true});
+        return await Pharmacy.find({isActive:true}).select(PharmacyQueryParams.GetInfoQueryParams()).populate('Address').find({isActive:true});
     };
 
     static GetById = async(id)=>{
-        return await Pharmacy.findById(id).select(["pharmacy_name"]).populate('Address').find({isActive:true}).exec();
+        return await Pharmacy.findById(id).select(PharmacyQueryParams.GetInfoQueryParams()).populate('Address').find({isActive:true}).exec();
     };
 
     static Create = async(model,address_id)=>{

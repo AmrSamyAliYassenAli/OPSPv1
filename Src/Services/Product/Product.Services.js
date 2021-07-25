@@ -1,15 +1,16 @@
 import {Product} from '../../Database/Models';
+const ProductQueryParams = require('../../Infrastructure/Enums/Product/Product.QueryParams');
 
 class ProductServices{
 
 //#region product CRUD
 
     static GetAll = async()=>{
-        return await Product.find({isActive:true}).select(["category","product_name","dosage_form","product_code","code"]);
+        return await Product.find({isActive:true}).select(ProductQueryParams.GetInfoQueryParams());
     };
 
     static GetById = async(id)=>{
-        return await Product.findById(id).select(["category","product_name","dosage_form","product_code","code"]);
+        return await Product.findById(id).select(ProductQueryParams.GetInfoQueryParams());
     };
 
     static Create = async(model)=>{

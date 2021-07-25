@@ -35,6 +35,11 @@ const OrderItemSchema = new Schema({
         require:false,
         default:false
     },
+    isActive:{
+        type:Boolean,
+        require:false,
+        default:false
+    },
     isCreated:{
         type:Boolean,
         require:false,

@@ -2,7 +2,6 @@ const ProductServices = require('../../../Services/Product/Product.Services');
 const ProductValidation = require('../../../Infrastructure/Validators/Product/Product.Validation');
 const ResponseBuilder = require('../../../Infrastructure/Constants/DTOs/Responce/ResponseBuilder');
 const ValidationMassages = require('../../../Infrastructure/Constants/DTOs/ValidationDTO/ValidationMassages');
-
 class ProductController{ 
 
     //#region Product CRUD && (Block && Toggle isActive)

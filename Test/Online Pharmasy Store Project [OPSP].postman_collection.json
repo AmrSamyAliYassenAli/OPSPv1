@@ -15,7 +15,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\":\"demo\",\r\n    \"username\":\"demo\",\r\n    \"email\":\"demo@demo.com\",\r\n    \"password\":\"demo123\"\r\n}",
+							"raw": "{\r\n    \"name\":\"demo\",\r\n    \"last_name\":\"demo\",\r\n    \"mobile_number\":\"012345678910\",\r\n    \"telephone_number\":\"25312014\",\r\n    \"address\":\"109 Nasr City\",\r\n    \"username\":\"demo1\",\r\n    \"email\":\"demo1@demo.com\",\r\n    \"password\":\"demo123\",\r\n    \"PharmacyID_FK\":\"60fba7ff68e3e82380770b8e\",\r\n    \"addressObj\":{\r\n        \"country\":{\r\n            \"country_name\":\"Egypt\",\r\n            \"country_code\":\"EG\"\r\n        },\r\n    \"city\":{\r\n        \"city_name\":\"cairo\",\r\n        \"postal_code\":\"11791\"\r\n    },\r\n    \"district_name\":\"elsa3a\",\r\n    \"building_number\":\"121\",\r\n    \"floor_number\":\"3\",\r\n    \"apartment_number\":\"34\",\r\n    \"address_details\":\"near KFC\"\r\n    }    \r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -122,6 +122,128 @@
 						"method": "GET",
 						"header": [],
 						"url": null
+					},
+					"response": []
+				},
+				{
+					"name": "Update User Info",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"60fcf12ff2beff5964d0d5ef\",\r\n    \"name\":\"demo\",\r\n    \"last_name\":\"demo\",\r\n    \"mobile_number\":\"012345678910\",\r\n    \"telephone_number\":\"25312014\",\r\n    \"address\":\"109 Nasr City\",\r\n    \"username\":\"demo\",\r\n    \"email\":\"demo@demo.com\",\r\n    \"password\":\"demo123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/users/api/update/info",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"users",
+								"api",
+								"update",
+								"info"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Block User Account",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"60fce9bbad727b1f4c10c2a9\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/users/api/block",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"users",
+								"api",
+								"block"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Toggle IsActive",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/users/api/toggleisacvtive",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"users",
+								"api",
+								"toggleisacvtive"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User Address",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"60fcf12ff2beff5964d0d5ef\",\r\n    \"AddressID_FK\":\"60fcf12ff2beff5964d0d5ed\",\r\n    \"addressObj\":{\r\n        \"country\":{\r\n            \"country_name\":\"Giza\",\r\n            \"country_code\":\"EG\"\r\n        },\r\n    \"city\":{\r\n        \"city_name\":\"cairo\",\r\n        \"postal_code\":\"11791\"\r\n    },\r\n    \"district_name\":\"elsa3a\",\r\n    \"building_number\":\"121\",\r\n    \"floor_number\":\"3\",\r\n    \"apartment_number\":\"34\",\r\n    \"address_details\":\"near KFC\"\r\n    }    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/users/api/update/address",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"users",
+								"api",
+								"update",
+								"address"
+							]
+						}
 					},
 					"response": []
 				}
@@ -649,6 +771,358 @@
 							"port": "5001",
 							"path": [
 								"parmacyproduct",
+								"api",
+								"toggleisacvtive"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "UserOrder",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"-1\",\r\n    \"UserID_FK\":\"60fce9bbad727b1f4c10c2a9\",\r\n    \"PharmacyID_FK\":\"60fba7ff68e3e82380770b8e\",\r\n    \"order_date\":\"2021-07-24T05:41:19.438+00:00\",\r\n    \"order_status\":\"Order1\",\r\n    \"order_total\":155,\r\n    \"shipping_date\":\"2021-07-24T05:41:19.438+00:00\",\r\n    \"prescription_code\":\"Code120\",\r\n    \"prescription_status\":\"Code120\",\r\n    \"submitted\":true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/userorder/api/manage",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"userorder",
+								"api",
+								"manage"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"60fceb5257f6125a1068956b\",\r\n    \"UserID_FK\":\"60fce9bbad727b1f4c10c2a9\",\r\n    \"PharmacyID_FK\":\"60fba7ff68e3e82380770b8e\",\r\n    \"order_date\":\"2021-07-24T05:41:19.438+00:00\",\r\n    \"order_status\":\"Order1Updated\",\r\n    \"order_total\":99,\r\n    \"shipping_date\":\"2021-07-24T05:41:19.438+00:00\",\r\n    \"prescription_code\":\"Code120Updated\",\r\n    \"prescription_status\":\"Code120Updated\",\r\n    \"submitted\":false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/userorder/api/manage",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"userorder",
+								"api",
+								"manage"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5001/userorder/api/get",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"userorder",
+								"api",
+								"get"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get By Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"60fceb5257f6125a1068956b\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/userorder/api/get",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"userorder",
+								"api",
+								"get"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Block User Order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5001/userorder/api/block",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"userorder",
+								"api",
+								"block"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Toggle IsActive",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"60fceb5257f6125a1068956b\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/userorder/api/toggleisacvtive",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"userorder",
+								"api",
+								"toggleisacvtive"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "OrderItem",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"UserOrderID_FK\":\"60fceb5257f6125a1068956b\",\r\n    \"price\":123,\r\n    \"amount\":15,\r\n    \"eachboxhas\":3,\r\n    \"medicine_code\":\"dfhdfh1515\",\r\n    \"medicine_name\":\"zsrgz45\",\r\n    \"include\":true,\r\n    \"submitted\":true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/orderitem/api/manage",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"orderitem",
+								"api",
+								"manage"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5001/userorder/api/manage",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"userorder",
+								"api",
+								"manage"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/orderitem/api/get",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"orderitem",
+								"api",
+								"get"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get By Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"60fcfedf112fe51d58d7206a\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/orderitem/api/get",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"orderitem",
+								"api",
+								"get"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Block Order Item",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/orderitem/api/block",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"orderitem",
+								"api",
+								"block"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Toggle IsActive",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/orderitem/api/toggleisacvtive",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"orderitem",
 								"api",
 								"toggleisacvtive"
 							]

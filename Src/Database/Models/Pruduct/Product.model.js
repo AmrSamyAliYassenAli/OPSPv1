@@ -1,4 +1,5 @@
 import { Schema,model } from "mongoose";
+const ProductEnums = require('../../../Infrastructure/Enums/Product/Product.Enums');
 
 const ProductSchema = new Schema({
     category:{
@@ -12,17 +13,7 @@ const ProductSchema = new Schema({
     },
     dosage_form:{
         type:String,
-        enum:[
-            "tablets", // أقراص
-            "capsules",
-            "iv/im/subcotanus", // حقن
-            "syrup",    // شراب
-            "suppostiries", // لبوس
-            "effervescent",  // فوار
-            "lozenges", // استحلاب
-            "potches", // لرقات
-            "ointments/gel/cream"   // جيل كريم مرهم
-        ]
+        enum:ProductEnums.GetDosageForm()
     },
     product_code:{
         type:String,

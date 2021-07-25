@@ -13,7 +13,9 @@ import { PORT,DB } from './Infrastructure/Constants';
 import userApis from './Api/Routes/User/User.Routes';
 import pharmacyApis from './Api/Routes/Pharmacy/Pharmacy.Routes';
 import productApis from './Api/Routes/Pruduct/Product.Routes';
-import pharmacyProduct from './Api/Routes/Pharmacy/PharmacyProduct.Routes';
+import pharmacyProductApis from './Api/Routes/Pharmacy/PharmacyProduct.Routes';
+import userorderApis from './Api/Routes/User/UserOrder.Routes';
+import orderitemApis from './Api/Routes/User/OrderItem.Routes';
 
 // Import passport Middelware
 require('./Infrastructure/Middlewares/passport.middleware');
@@ -30,7 +32,9 @@ app.use(express.static(join(__dirname, '../Uploads')));
 app.use('/users',userApis);
 app.use('/pharmacy',pharmacyApis);
 app.use('/product',productApis);
-app.use('/parmacyproduct',pharmacyProduct);
+app.use('/parmacyproduct',pharmacyProductApis);
+app.use('/userorder',userorderApis);
+app.use('/orderitem',orderitemApis);
 
 // Implement Main startUp Function
 const main = async()=>{

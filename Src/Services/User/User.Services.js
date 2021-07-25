@@ -17,8 +17,12 @@ class UserServices{
 
 //#region Registeration && Verify Account && Login && Logout
 
-    static Register = async (model)=>{
+    static Register = async (model,address_id)=>{
         let user = new User({
+            AddressID_FK:address_id,
+            isActive:true,
+            isCreated:true,
+            createdId:"-1",
             ...model,
             verificationCode: randomBytes(20).toString("hex"),
         });
@@ -71,6 +75,50 @@ class UserServices{
         user.resetPasswordExpiresIn = undefined;
         await user.save();
         return user;
+    };
+
+//#endregion
+
+//#region Update Account && Block Account && Toogle IsActive
+
+    static UpdateInfo = async(model)=>{
+        let _User = await User.findOneAndUpdate({_id:model.id},{
+            isActive:true,
+            isUpdated:true,
+            updatedId:"-1",
+            ...model
+        });
+        return _User;
+    };
+
+    static UpdateAddress = async(id)=>{
+        let _User = await User.findOneAndUpdate({_id:id},{
+            isActive:true,
+            isUpdated:true,
+            updatedId:"-1"
+        });
+        return _User;
+    };
+
+    static Block = async(id)=>{
+        await User.findOneAndUpdate({_id:id},{
+            isActive:false
+        });
+    };
+
+    static ToggleIsActive = async(id)=>{
+        let {isActive} = await User.findById(id).exec();
+        if(isActive){
+            await User.findOneAndUpdate({_id:id},{
+                isActive:false
+            });
+            return false;
+        }else{
+            await User.findOneAndUpdate({_id:id},{
+                isActive:true
+            });
+            return true;
+        }
     };
 
 //#endregion

@@ -78,4 +78,40 @@ router.post('/api/reset-password-now',UserController.SaveNewPasswordResetted);
 
 //#endregion
 
+//#region Update Account && Block Account && Toogle IsActive
+
+/**
+ * @description To Update this user Personal information
+ * @access Public
+ * @api /users/api/update
+ * @type Post  
+ */
+router.post('/api/update/info',UserController.UpdateInfo);
+
+/**
+ * @description To Update this user Personal information
+ * @access Public
+ * @api /users/api/update
+ * @type Post  address
+ */
+router.post('/api/update/address',UserController.UpdateAddress);
+
+/**
+ * @description to block user
+ * @access Public
+ * @api /users/api/block
+ * @type Post 
+ */
+router.post('/api/block',UserController.Block);
+
+/**
+ * @description to toggle isActive 
+ * @access Public
+ * @api /users/api/toggleisacvtive
+ * @type Post 
+ */
+router.post('/api/toggleisacvtive',UserController.ToggleIsActive);
+
+//#endregion
+
 export default router;

@@ -1,5 +1,4 @@
 import { Schema,model } from "mongoose";
-import { pick } from 'lodash';
 
 const PharmacySchema = new Schema({
     AddressID_FK:{
