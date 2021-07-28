@@ -1,5 +1,5 @@
 import ValidationMassages from '../../../Infrastructure/Constants/DTOs/ValidationDTO/ValidationMassages';
-const SendMail = require('../../../Infrastructure/Helpers/email-sender');
+const SendMail = require('../../../Infrastructure/Helpers/node-mailer');
 const ResponseBuilder = require('../../../Infrastructure/Constants/DTOs/Responce/ResponseBuilder');
 const UserValidation = require('../../../Infrastructure/Validators/User/User.Validation');
 const UserServices = require('../../../Services/User/User.Services');
@@ -38,9 +38,9 @@ class UserController{
                 return res.status(401).send(ResponseBuilder.Create(false,{},ValidationMassages.UnAuthorizedAccess+ValidationMassages.InvalidVerificationCode));
             }
             await UserServices.VerifyAccount(verificationCode);
-            return res.sendFile(join(__dirname,'../../Templates/verification-success.html'));
+            return res.sendFile(join(__dirname,'../../../Templates/verification-success.html'));
         } catch (error) {
-            return res.sendFile(join(__dirname,'../../Templates/errors.html'));
+            return res.sendFile(join(__dirname,'../../../Templates/errors.html'));
         }
     }
 
@@ -102,9 +102,9 @@ class UserController{
             if(!await UserValidation.IsValidToken(resetPasswordToken)){
                 return res.status(401).send(ResponseBuilder.Create(false,{},ValidationMassages.InValidorEcpirePasswordResetToken));
             }
-            return res.sendFile(join(__dirname,'../../Templates/password-reset/password-reset.html'));
+            return res.sendFile(join(__dirname,'../../../Templates/password-reset/password-reset.html'));
         } catch (error) {
-            return res.sendFile(join(__dirname,'../../Templates/errors.html'));
+            return res.sendFile(join(__dirname,'../../../Templates/errors.html'));
         }
     };
 
